@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "missing_testids": []
+    },
+    {
+      "save_status": 200,
+      "save_status_ok": true,
+      "saved_flash_visible": true,
+      "max_attempts_persisted": true,
+      "tests_failed_persisted": true
+    },
+    {
+      "restore_status": 200
+    },
+    {
+      "legacy_primary_model_control_absent": true,
+      "paid_lock_visible": true
+    },
+    {
+      "edit_link_targets_models_tab": true
+    },
+    {
+      "unknown_not_fake_zero": true
+    }
+  ],
+  "overflow": [
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "has_overflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "has_overflow": false
+    }
+  ]
+}

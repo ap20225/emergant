@@ -1,0 +1,88 @@
+{
+  "workspaces": [
+    {
+      "job_id": "job_2a5bc6a3deb2",
+      "repository_path": "/app/jobs/job_2a5bc6a3deb2/repository",
+      "checks": [
+        {
+          "cmd": "git rev-parse --is-inside-work-tree",
+          "exit_code": 0,
+          "stdout": "true",
+          "stderr": ""
+        },
+        {
+          "cmd": "git branch --show-current",
+          "exit_code": 0,
+          "stdout": "bounty/job_2a5bc6a3deb2",
+          "stderr": ""
+        },
+        {
+          "cmd": "git status --porcelain",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "cmd": "git log --oneline -n 5",
+          "exit_code": 0,
+          "stdout": "49ff589 fix: normalize whitespace in slugify\n1e3b84c Initialize controlled reference fixture",
+          "stderr": ""
+        },
+        {
+          "cmd": "git remote -v",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "cmd": "git diff --stat",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "job_id": "job_a87d8b843471",
+      "repository_path": "/app/jobs/job_a87d8b843471/repository",
+      "checks": [
+        {
+          "cmd": "git rev-parse --is-inside-work-tree",
+          "exit_code": 0,
+          "stdout": "true",
+          "stderr": ""
+        },
+        {
+          "cmd": "git branch --show-current",
+          "exit_code": 0,
+          "stdout": "bounty/job_a87d8b843471",
+          "stderr": ""
+        },
+        {
+          "cmd": "git status --porcelain",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "cmd": "git log --oneline -n 5",
+          "exit_code": 0,
+          "stdout": "cafd772 fix: normalize whitespace in slugify\n5f01045 Initialize controlled reference fixture",
+          "stderr": ""
+        },
+        {
+          "cmd": "git remote -v",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "cmd": "git diff --stat",
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ]
+    }
+  ]
+}

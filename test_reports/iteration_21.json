@@ -1,0 +1,30 @@
+{
+  "summary": "Frontend-only verification of the Bounty Hunter Discovery board + Review queue visibility fix. Loaded / as owner (session_token cookie from user_sessions). Dashboard renders without crash. Discovery board: disc-runnable-now=157, disc-runnable-strip visible with 5 chips (each has disc-run-strip-<id>), summary tile disc-total=245, lane tabs including disc-tab-RUNNABLE (labeled 'RUNNABLE (157)') and disc-tab-ALL present. Per-row testids verified: every disc-item-<id> row shows a runnable badge and a disc-reason-<id>. Action cell renders per state: RUNNABLE=disc-run-<id> (127 rendered in first 200 rows), NOT_RUNNABLE=disc-run-disabled-<id> (57 rendered, disabled=true with reason as title), NEEDS_RECHECK=disc-recheck-<id> (16 rendered), NEEDS_QUALIFICATION=disc-qualify-<id> (0 in current data — none in this state right now). Clicking disc-tab-RUNNABLE filters the list to exactly 157 rows, all with badge=RUNNABLE (0 non-runnable) — filter works. Review queue renders three buckets with correct counts NEEDS_YOUR_REVIEW=12, DECLINED_BY_ENGINE=0, BLOCKED_EXTERNALLY=1; NEEDS_YOUR_REVIEW items expose rq-open-<id> links; BLOCKED/DECLINED items expose rq-dismiss-<id> buttons. SAFE-dismissed the single BLOCKED_EXTERNALLY item (rq-dismiss-job_0bd8bf246b04): count went 1→0, item removed from DOM after refresh — archive flow works. Triggered exactly one Recheck (disc-recheck-bopp_e05b26f3be77): success toast 'Rechecked against live GitHub state.' observed. NO Run buttons were clicked anywhere (RecommendedBounty, disc-run-<id>, or strip). No pageerrors. A guided-tour modal overlays the dashboard on first visit but does not block underlying data rendering; explicit tab clicks work via native .click(). Note: 10 x 401 console errors appeared during initial navigation (likely unauthenticated pre-cookie requests to something like /api/auth/me or similar) but the app recovered — worth a quick look but not a functional bug for this change.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Dashboard first-load", "issues": ["Guided-tour modal ('Welcome to Bounty Hunter') covers the dashboard on entry; not a regression, but combined with 10 x 401 console errors during initial page load it can worry the owner. Consider suppressing 401s from unauthenticated pre-session probes when session cookie is present."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/test_reports/iter21_dashboard.jpeg",
+    "/app/test_reports/iter21_after_actions.jpeg"
+  ],
+  "action_items": [
+    "Optional: investigate the 10 x 401 console errors emitted on initial dashboard load (visible even after cookie present) — likely a route that authenticates via a different mechanism or racing before hydration. Not blocking."
+  ],
+  "critical_code_review_comments": [
+    "DiscoveryBoard.js caps the rendered rows at rows.slice(0, 200). With total=245 items in ALL, the tail 45 rows are silently hidden — acceptable UX cap but pagination or a 'show more' would prevent user surprise.",
+    "DiscoveryBoard load() runs every 15s and ReviewQueue.load() every 20s; both are fine, but neither pauses when the tab is hidden — small polish opportunity via document.visibilityState.",
+    "ReviewQueue has a 'Dismiss all N' bulk button for DECLINED_BY_ENGINE / BLOCKED_EXTERNALLY (>1 items). Current data has only 1 blocked and 0 declined so bulk was not exercised — endpoint POST /jobs/archive-bulk with {bucket} should be smoke-tested by main agent when data supports it."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (frontend-only)", "frontend": "100%"},
+  "test_credentials": "Owner session_token pulled from user_sessions collection (latest, non-expired) via /app/tests/session_utils.py. No credentials created/modified.",
+  "seed_data_creation": "One SAFE archive was performed: POST /api/bounty/jobs/job_0bd8bf246b04/archive (removed the sole BLOCKED_EXTERNALLY qtop/qtop#484 item from the queue). One SAFE recheck was performed: POST /api/bounty/opportunities/bopp_e05b26f3be77/recheck (read-only GitHub recheck).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Discovery board and Review queue visibility fix verified. BLOCKED_EXTERNALLY bucket is now empty (was 1) after the safe dismiss. NEEDS_YOUR_REVIEW still 12, DECLINED_BY_ENGINE still 0. No Run buttons were clicked; the qtop/qtop#484 recommended bounty is still un-run for THIS iteration. Job job_b0f74f5b09cf from iteration 20 may still be tracked in the queue. If the guided-tour overlay blocks interactions, use page.evaluate to native-click testid buttons — the standard Playwright click can be intercepted by the modal."
+}

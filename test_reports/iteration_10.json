@@ -1,0 +1,57 @@
+{
+  "summary": "Backend-only safety/authorization review for atomic budget cap + owner-only routes. Deterministic pytest suite passes (5/5). All 5 sensitive endpoints reject unauthenticated requests with 401. Read-only status with owner session confirms workspace RUNTIME_VERIFIED, runner.runtime_verified=true, run_budget.authorized=false, model catalog CONNECTED with 302 model_ids. Publish 409 approval-gate test could NOT be performed as documented because the controlled job's status is APPROVED (not WAITING_APPROVAL) in the current DB — calling publish would risk real external GitHub writes, which strict no-spend/no-mutation rules forbid.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_production_safety.py"
+  ],
+  "detailed_results": {
+    "pytest_test_production_safety": "5 passed in 0.35s (concurrent-budget-cap race safety, budget block when run not authorized, reconcile adjust down, redact() masks AWS keys + PRIVATE KEY blocks, parse_patch rejects AWS keys/.env/path-traversal and accepts clean patch).",
+    "unauthenticated_auth_checks": {
+      "GET /api/bounty/execution/status": 401,
+      "PUT /api/bounty/routing-policy": 401,
+      "POST /api/bounty/execution/start": 401,
+      "POST /api/bounty/execution/anything/publish": 401,
+      "POST /api/bounty/connections/runner/verify": 401
+    },
+    "readonly_status_with_owner_session": {
+      "top_level_status": "NOT_READY",
+      "workspace.status": "RUNTIME_VERIFIED",
+      "runner.runtime_verified": true,
+      "run_budget.authorized": false,
+      "run_budget.spent_nano_usd": 500,
+      "run_budget.cap_nano_usd": 1000000000,
+      "model.catalog_status": "CATALOG_CONNECTED",
+      "model.model_count": 302,
+      "model.routing_strategy": "CHEAPEST_FIRST_CAPPED",
+      "github.status": "CONNECTED",
+      "github.external_write_authorized": false
+    },
+    "controlled_job_lookup": {
+      "job_id": "job_e141c1ada743",
+      "opportunity_id": "controlled:ap20225/bounty-hunter#1",
+      "current_db_status": "APPROVED",
+      "expected_per_request": "WAITING_APPROVAL",
+      "note": "Because gate would pass on APPROVED status, calling publish would proceed to real external GitHub API writes; skipped to honor STRICT NO-SPEND / NO-MUTATION rule."
+    }
+  },
+  "action_items": [
+    "Approval-gate 409 test on the controlled job is not demonstrable in the current DB state (job already APPROVED). Main agent may either (a) create a fresh non-APPROVED controlled job stub for gate testing, or (b) explicitly authorize publish testing knowing external GitHub mutation may occur."
+  ],
+  "critical_code_review_comments": [
+    "publication.Publisher.gate is thorough (mode/global_stop/connection/status+approval_status/test+security+review/artifact_hash/parse_patch) — good defense in depth.",
+    "bounty/budget.RunBudget.reserve uses find_one_and_update with $expr for atomic single-run cap enforcement; race-safe per pytest.",
+    "parse_patch rejects secrets, .env files, and path traversal per test suite."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (all executable checks passed; 1 scenario blocked by DB precondition, not a defect)", "frontend": "N/A"},
+  "test_credentials": "Reused existing owner session from Mongo user_sessions (not exported).",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Controlled job job_e141c1ada743 is currently APPROVED — if approval-gate 409 needs re-demonstration, arrange a job in WAITING_APPROVAL or reset approval_status. Do NOT call publish on APPROVED controlled job unless external GitHub mutations are explicitly authorized.",
+  "rca of the issue": "N/A — no defect found. Discrepancy is a stale precondition in the test request (job already APPROVED) rather than an application bug."
+}

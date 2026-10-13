@@ -1,0 +1,55 @@
+{
+  "responsive": [
+    {
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "overflow": false
+    }
+  ],
+  "checks": [
+    {
+      "readiness": "NOT READY",
+      "start_disabled_without_gh": true,
+      "verify_disabled_without_gh": true,
+      "usage_empty_text": "No inference attempted. Tokens, latency and actual inference cost are not available.",
+      "inference_text": "Inference: NOT VERIFIED",
+      "catalog_status_text": "CATALOG CONNECTED"
+    },
+    {
+      "empty_required_validation": {
+        "valid": false,
+        "msg": "Please fill out this field."
+      }
+    },
+    {
+      "invalid_issue_422_error": "Untrusted request origin",
+      "token_cleared_after_422": true
+    }
+  ],
+  "mocked": [
+    {
+      "type": "BROWSER MOCK ONLY",
+      "flow": "github_connect_failure_password_clear",
+      "error": "MOCKED_GITHUB_CONNECT_FAILURE",
+      "token_cleared": true
+    },
+    {
+      "type": "BROWSER MOCK ONLY",
+      "flow": "diagnostic_button_409_inline_error",
+      "status_mock_hit": true,
+      "diagnostic_mock_hit": true,
+      "inline_error": "PROVIDER_CAP_UNVERIFIED: diagnostic blocked"
+    }
+  ]
+}

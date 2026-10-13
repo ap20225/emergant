@@ -1,0 +1,36 @@
+{
+  "summary": "Frontend-only verification of new owner Command Center page at /command-center. All 13 acceptance criteria from the review request pass: nav item, global strip (7 indicators), all 6 panels, capability rows (UNATTENDED_EXECUTION=DISABLED, AUTO_ESCALATION=DISABLED), opportunities counts + 'qualified · not authorized' note + 'REWARD UNKNOWN' + no bare AUTHORIZED, finance rows (cap/reserved/confirmed/remaining + revenue NO REVENUE RECORDED), safety NOT TRACKED for secret & authz, Refresh, Edit config modal open+cancel, Run scheduler once (deterministic success), Generate + View briefing modal (model used: none deterministic), 'What needs your attention' section, EXECUTION panel job publication statuses (NOT PUBLISHED) with NO Execute-all/Auto-authorize/Publish/Merge/Approve buttons anywhere on the page, and regression on /dashboard /opportunities /jobs /settings all load with 0 console errors. cc-run-discovery was NOT clicked per safety instructions.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Command Center - Refresh button", "issues": ["Clicking cc-refresh did not change the 'Last updated' timestamp within 3s in one observation (still shows Sep 17, 08:23 AM before & after). Data endpoint responds fast so timestamp granularity (per-minute) may hide the update; recommend showing seconds or animating a loading state to make refresh visibly acknowledged."]},
+      {"screen": "Command Center - Sources", "issues": ["Last discovery attempt shows 'Last error: 502: GitHub discovery search HTTP 422' from a prior run — informational (source still HEALTHY), but consider surfacing this in the attention strip if it recurs."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/test_reports/cc_load.jpg",
+    "/app/test_reports/cc_after_actions.jpg"
+  ],
+  "action_items": [
+    "(Optional/minor) Consider making the Refresh visibly reflect the new fetch (spinner or seconds-precision timestamp) — currently cc-last-updated can appear unchanged between two clicks within the same minute.",
+    "(Optional) Surface repeating discovery errors (HTTP 422) in the attention strip if they persist."
+  ],
+  "critical_code_review_comments": [
+    "Safety invariants correctly enforced in UI: UNATTENDED_EXECUTION and AUTO_ESCALATION render as DISABLED pills; no execution/publish/merge/approve buttons exist on the Command Center; job publication column strictly renders NOT_PUBLISHED / DRAFT / PUBLISHED.",
+    "Opportunities correctly distinguish QUALIFIED vs AUTHORIZED — all 14 qualified rows show status AWAITING_AUTHORIZATION with the 'qualified · not authorized' sub-note; no row incorrectly shows AUTHORIZED.",
+    "Rewards without value correctly render 'REWARD UNKNOWN' instead of fabricated $0.",
+    "Finance panel separates budget cap ($1.00), reserved ($0.000000), provider-confirmed spent ($0.000516) and remaining ($1.00), and revenue explicitly reads 'NO REVENUE RECORDED'.",
+    "Safety panel: secret_violations and authorization_denials explicitly render 'NOT TRACKED' rather than 0 — semantically correct.",
+    "Briefing modal explicitly documents 'Deterministic database aggregation. No model inference was used.' and Model used = 'none (deterministic)'.",
+    "One 401 console message appears once on initial navigation (likely an unauthenticated pre-check request before the session cookie is applied). Non-blocking, but consider suppressing or retrying silently to keep the console clean."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "not tested (per request)", "frontend": "100% (13/13 acceptance criteria)"},
+  "test_credentials": "Owner session pulled from user_sessions for user_id from instance_config._id=instance_owner; not persisted.",
+  "seed_data_creation": "None. Existing 23 opportunities (14 AWAITING_AUTHORIZATION, 9 REJECTED), 3 job rows and existing briefing/scheduler state used as-is. Ran scheduler once (deterministic, 0 discovered, 0 qualified, no jobs) and generated a briefing (deterministic, model=none). Neither creates external effects or spends credits.",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Command Center UI is fully wired. cc-run-discovery is a live GitHub-search button that must NOT be exercised without owner authorization. cc-run-scheduler and cc-gen-briefing are safe (deterministic, no provider spend). Layout renders cleanly at 1920x1080 without horizontal overflow. Session cookie must be set on the preview host before navigating; otherwise the initial /api/bounty/command-center call returns 401 and the strip shows 'DATA UNAVAILABLE'."
+}

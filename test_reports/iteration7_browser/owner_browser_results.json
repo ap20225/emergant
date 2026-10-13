@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "execution_status_http": 200
+    },
+    {
+      "github_invalid_issue_http": 422,
+      "github_invalid_issue_error": "Invalid configuration fields. Check repository, issue number and credential format.",
+      "token_cleared_after_invalid_submit": true,
+      "secret_echoed": false
+    },
+    {
+      "catalog_text_before_diagnostic": "302 catalog models",
+      "catalog_count": 302
+    },
+    {
+      "diagnostic_http": 409,
+      "diagnostic_error": "PROVIDER_CAP_UNVERIFIED: provider-enforced $1 ceiling and single-route billing cannot be established; no inference sent",
+      "usage_rows_after_diagnostic": 0,
+      "usage_empty_visible": true
+    }
+  ],
+  "responsive": [
+    {
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "overflow": false
+    }
+  ]
+}

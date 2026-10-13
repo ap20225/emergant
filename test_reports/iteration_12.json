@@ -1,0 +1,41 @@
+{
+  "summary": "Phase 5 backend verification. Deterministic pytest suites test_phase5_discovery.py + test_autonomy_safety.py + test_production_safety.py = 17/17 passed (0.48s). New e2e suite test_phase5_e2e_owner.py = 6/6 passed. Owner-only Phase 5 routes reject unauthenticated with 401 (/sources/health, GET+PUT /discovery/config, POST /discovery/github/run, POST /opportunities/{id}/recheck). Capability matrix confirmed: LIVE_RECHECK=READY, PERSISTENT_SCHEDULER=PARTIAL, AUTO_ESCALATION=DISABLED, UNATTENDED_EXECUTION=DISABLED, REAL_SOURCE=NOT_IMPLEMENTED, CONTROLLED_OPERATION=READY, DISCOVERY=READY. Live GitHub read-only discovery (after fixing bad saved query — see bug below): run1 created=9 duplicates=1; run2 created=0 duplicates=10 (dedup works). Opportunities appear as source=github, status=DISCOVERED, reward_verification_status=UNKNOWN (no fabricated rewards). Source health: github HEALTHY, total_discovered=14, consecutive_failures=0. Live recheck on open issue returned {fresh:true}; no job created; run_budget.authorized remains false throughout. NO provider (Experiential) calls, NO E2B launches, NO POST /execution/start, NO budget authorization.",
+  "backend_issues": {
+    "critical": [
+      {"endpoint": "POST /api/bounty/discovery/github/run (default query)", "issue": "Default/saved discovery config query is 'label:bounty state:open' which returns GitHub Search HTTP 422 (Unprocessable Entity) when called with an authenticated token. GitHub's Search Issues API rejects the 'state:' qualifier under the Sept 2025 advanced-search enforcement for authenticated calls. Fallback in adapter.fetch() uses the correct form 'is:issue is:open label:bounty', but execution_routes.get_discovery_config (line 193) and discovery_github_run (line 205) still hardcode the invalid default, and the stored system_settings.discovery-config value is also invalid. Discovery endpoint therefore fails with 502 out-of-the-box for any owner, and marks source github as DEGRADED.", "priority": "HIGH"}
+    ],
+    "minor": [
+      {"endpoint": "GET /api/bounty/execution/status.capability_matrix.REAL_SOURCE", "issue": "Reports 'NOT_IMPLEMENTED' even though Phase 5 shipped a real live GitHub adapter (GitHubIssueAdapter with live /search/issues call). Once discovery has succeeded at least once (source_health.status=HEALTHY, total_discovered>0), readiness should reflect REAL_SOURCE=READY (or a graded value). Owner-visible readiness matrix therefore under-reports current capability."}
+    ]
+  },
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_phase5_discovery.py",
+    "/app/backend/tests/test_autonomy_safety.py",
+    "/app/backend/tests/test_production_safety.py",
+    "/app/backend/tests/test_phase5_e2e_owner.py"
+  ],
+  "action_items": [
+    "Fix the default discovery query in /app/backend/bounty/execution_routes.py (lines 193 and 205) from 'label:bounty state:open' to 'is:issue is:open label:bounty' (which is what the adapter fallback already uses).",
+    "Migrate the stored system_settings.discovery-config document so any existing owner installs get the corrected query automatically (one-time upsert on startup if query lacks 'is:issue' or contains 'state:').",
+    "Update readiness capability_matrix so REAL_SOURCE reflects the shipped live GitHub adapter (e.g. READY when github source_health is HEALTHY, else PARTIAL/DEGRADED instead of the current hard-coded NOT_IMPLEMENTED)."
+  ],
+  "critical_code_review_comments": [
+    "GitHubIssueAdapter.normalize is pure and safe (reward=None, currency=None — no fabricated rewards).",
+    "Discovery.run_source correctly routes failures through SourceHealth.record with per-source isolation and status DEGRADED->FAILING on consecutive_failures>=3.",
+    "LiveRecheck.recheck is read-only (uses _github_fetch), returns fresh/STALE_REQUIRES_RECHECK with reason and never creates jobs or authorizes budget — verified in live test.",
+    "Owner auth guards on all five new endpoints work (401 unauth).",
+    "canonical_duplicate_key hierarchy (source + source_identifier / repository + issue_number / url) exercised by test_phase5_discovery.py; deterministic tests pass.",
+    "Scheduler.run_once has lease semantics validated by deterministic test; background scheduler stays OFF by default (SCHEDULER_BACKGROUND_ENABLED not set)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_phase5_e2e_owner.py (new)"
+  ],
+  "success_rate": {"backend": "100% pytest (23/23); 1 config-default bug found that blocks default install of /discovery/github/run", "frontend": "N/A (skipped per request)"},
+  "test_credentials": "Owner session (user_id from instance_config._id=instance_owner) fetched read-only from Mongo user_sessions per /app/memory/test_credentials.md; not exported.",
+  "seed_data_creation": "9 live github opportunities were discovered by the live adapter into bounty_opportunities during testing (real public issues, DISCOVERED, reward_verification_status=UNKNOWN). Not deleted (per instruction: 'Do not delete real discovered opportunities'). Discovery config was temporarily PUT to a valid query and restored to prior value at end of tests.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Deterministic pytest command: cd /app/backend && python -m pytest tests/test_phase5_discovery.py tests/test_autonomy_safety.py tests/test_production_safety.py tests/test_phase5_e2e_owner.py -q. The e2e file requires an active owner session in Mongo user_sessions. If default query bug is fixed (query becomes 'is:issue is:open label:bounty'), the good_query fixture becomes a no-op passthrough. bounty_opportunities collection now has ~14 real github opportunities; leave them.",
+  "rca of the issue": "GitHub deprecated legacy Search Issues qualifiers under authenticated calls (Sept 2025 advanced search rollout). The query 'label:bounty state:open' works unauthenticated but returns HTTP 422 when sent with a bearer token, because 'state:' is no longer accepted; the correct qualifier is 'is:open' combined with 'is:issue'. The adapter's inline fallback in bounty/autonomy.py:286 uses the correct form, but the persisted default in bounty/execution_routes.py:193 and :205 (and the currently saved system_settings.discovery-config) still use the deprecated form, so /discovery/github/run raises HTTPException(502, 'GitHub discovery search HTTP 422') on a fresh install and marks source_health.github as DEGRADED. Mitigation: change the two hard-coded defaults to 'is:issue is:open label:bounty' and add a one-time migration to rewrite invalid stored queries."
+}

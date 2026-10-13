@@ -1,0 +1,1914 @@
+{
+  "status": 200,
+  "model_count": 318,
+  "data": [
+    {
+      "id": "aion-2.0",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "aion-3.0",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "aion-3.0-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "aion-rp-llama-3.1-8b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-3-haiku",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-fable-5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-fable-5.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-fable-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-haiku-4.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-haiku-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-opus-4.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-opus-4.6",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-opus-4.7",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-opus-4.8",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-opus-5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-opus-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-sonnet-4",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-sonnet-4.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-sonnet-4.6",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-sonnet-5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "claude-sonnet-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "codestral-2508",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "command-a",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "command-r-08-2024",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "command-r-plus-08-2024",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "command-r7b-12-2024",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "cydonia-24b-v4.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-r1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-r1-0528",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v3.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v3.2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v3.2-exp",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v3.2-speciale",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v4-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v4-flash-0731",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v4-flash-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v4-flash-vision-exp",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v4-pro-0813",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "deepseek-v4.1-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "devstral-2-123b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "dolphin-mistral-24b-venice-edition",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ernie-4.5-vl-424b-a47b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "fugu-max",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "fugu-ultra",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "fugu-ultra-v2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-2.5-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-2.5-flash-image",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-2.5-flash-lite",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-2.5-pro",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-2.5-pro-preview",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-2.5-pro-preview-05-06",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3-flash-preview",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3-pro-image",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.1-flash-image",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.1-flash-lite",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.1-flash-lite-image",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.1-pro-preview",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.1-pro-preview-customtools",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.5-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.5-flash-lite",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.6-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.7-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-3.8-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-flash-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemini-pro-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemma-2-27b-it",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemma-3-12b-it",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemma-3-27b-it",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemma-3-4b-it",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemma-4-26b-a4b-it",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemma-4-26b-a4b-it-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemma-4-31b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gemma-4-31b-it",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4-32b-0414-128k",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.5-air",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.5-airx",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.5-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.5-x",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.5v",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.6",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.6v",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.6v-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.6v-flashx",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.7",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.7-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-4.7-flashx",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-5-turbo",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-5.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-5.2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-5.3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-5.3-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-5v-turbo",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "glm-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-3.5-turbo",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-3.5-turbo-0613",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-3.5-turbo-16k",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-3.5-turbo-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-4-turbo",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-4.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-4.1-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-4.1-nano",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-4o",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-4o-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5-image",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5-image-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5-nano",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.1-codex",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.1-codex-max",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.1-codex-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.2-codex",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.3-codex",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.4",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.4-image-2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.4-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.4-nano",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.5-pro",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.6-luna",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.6-luna-pro",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.6-sol",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-5.6-terra",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-6-astra",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-chat-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-mini-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-oss-120b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-oss-20b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-oss-safeguard-120b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "gpt-oss-safeguard-20b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "granite-4.0-h-micro",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4-1-fast-non-reasoning",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4-1-fast-reasoning",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4.20",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4.20-multi-agent",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4.20-non-reasoning",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4.3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-4.6",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-build-0.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-code-fast-1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "grok-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hermes-3-llama-3.1-405b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hermes-3-llama-3.1-70b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hermes-4-405b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hunyuan-a13b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hy-mt2-1.8b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hy-mt2-30b-a3b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hy-mt2-7b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hy3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hy3-preview",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "hy4-preview",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "inkling",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "inkling-small",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kat-coder-pro-v2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kat-coder-pro-v2.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kimi-k2-0905",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kimi-k2-thinking",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kimi-k2.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kimi-k2.6",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kimi-k2.7-code",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kimi-k3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "kimi-latest",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "laguna-s-2.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "laguna-s-2.1-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "laguna-xs-2.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "laguna-xs-2.1-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "lfm-2.5-2.6b-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ling-3.0-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ling-3.0-flash-fin",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ling-3.0-flash-fin-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "llama-3-lunaris-8b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "llama-3.1-70b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "llama-3.1-euryale-70b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "llama-3.3-70b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "llama-3.3-euryale-70b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "llama-4-maverick",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "llama-4-scout",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "llama-guard-4-12b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "longcat-2.0",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "magistral-small-2509",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "magnum-v4-72b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mercury-2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mimo-v2.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mimo-v2.5-pro",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "minimax-01",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "minimax-m1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "minimax-m2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "minimax-m2-her",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "minimax-m2.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "minimax-m2.5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "minimax-m3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ministral-14b-2512",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ministral-3-3b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ministral-3-8b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-7b-instruct-v0p2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-large",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-large-2407",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-large-2512",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-large-3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-large-3-675b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-medium-3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-medium-3-5",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-medium-3.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-nemo",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-saba",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-small-2603",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-small-3.1-24b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mistral-small-3.2-24b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mixtral-8x22b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "mixtral-8x7b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "morph-v3-fast",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "morph-v3-large",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "muse-glimmer-30b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "muse-spark-1.1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "muse-spark-1.2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "muse-spark-1.2-contributor",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "muse-spark-1.3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "muse-spark-1.3-contributor",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-3-nano-30b-a3b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-3-nano-omni-30b-a3b-reasoning-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-3-super-120b-a12b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-3-ultra-550b-a55b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-3-ultra-550b-a55b-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-3.5-content-safety-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-3.5-lightning",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-nano-12b-v2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nemotron-nano-9b-v2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "north-mini-code-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nova-2-lite-v1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "nova-premier-v1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "o3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "o3-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "o3-mini-high",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "o4-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "o4-mini-high",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "openrouter-free",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "palmyra-vision-7b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "perceptron-mk1",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "phi-4",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "phi-4-mini-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "phi-4-mini-reasoning",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "phi-4-multimodal-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "phi-4-reasoning",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ppocrv6-medium-det",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen-plus",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen-plus-2025-07-28",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen2.5-vl-72b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-14b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-235b-a22b-instruct-2507",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-32b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-coder-30b-a3b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-coder-480b-a35b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-coder-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-coder-next",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-coder-plus",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-max",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-max-thinking",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-next-80b-a3b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-next-80b-a3b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-next-80b-a3b-thinking",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-vl-235b-a22b-instruct",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3-vl-8b-thinking",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.5-122b-a10b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.5-27b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.5-35b-a3b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.5-397b-a17b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.5-9b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.5-flash-02-23",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.5-plus-02-15",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.5-plus-20260420",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.6-27b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.6-35b-a3b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.6-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.6-max-preview",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.6-plus",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.7-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.7-max",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.7-plus",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.8-2.4t-a95b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.8-27b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.8-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.8-max",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "qwen3.8-max-0902",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "reka-edge",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "reka-flash-3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "relace-apply-3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "relace-search",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "remm-slerp-l2-13b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "seed-1.6",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "seed-1.6-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "seed-2-1-turbo",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "seed-2.0-code",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "seed-2.0-lite",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "seed-2.0-mini",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "skyfall-36b-v2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "solar-pro-3",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "solar-pro4",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "sonar",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "sonar-deep-research",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "sonar-pro",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "sonar-pro-search",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "sonar-reasoning-pro",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "step-3.5-flash",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "trinity-large-thinking",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "ui-tars-1.5-7b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "unslopnemo-12b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "v3.2",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "voxtral-mini-3b-2507",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "weaver",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    },
+    {
+      "id": "wizardlm-2-8x22b",
+      "object": "model",
+      "created": 0,
+      "owned_by": "exp"
+    }
+  ]
+}

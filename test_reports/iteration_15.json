@@ -1,0 +1,25 @@
+{
+  "summary": "Verified origin-allowlist bug fix for /api/bounty mutating requests from the Emergent preview browser. Executed REAL PUT /api/bounty/execution/policy via Execution Settings Save (mutating request that previously 403'd with 'Untrusted request origin'); it now succeeds (200) with no origin/CORS error. Verified persistence via reopen and restored the policy to defaults. Command Center page and all /api/bounty reads returned 200. Run confirmation modal opens on cc-run-<opportunityId>, Cancel closes with zero /execution/bounty network calls. Mocked run/state/stop flow via Playwright route interception: POST run -> QUEUED, two GET state polls (CODING active=true, then SUBMITTED active=false), Live Job panel appears, polling stops on active=false, cc-job-stop hidden after terminal.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": ["/app/test_reports/iteration_15.json"],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (frontend-only run)", "frontend": "100%"},
+  "test_credentials": "Reused instance-owner session_token from user_sessions for user_12742a4c8152 (cookie session_token, HttpOnly Secure SameSite=None).",
+  "seed_data_creation": "None. Policy briefly changed max_total_model_attempts 6->7 to force real PUT, then restored to {6,2,2,3,2,2}.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Origin allowlist regression is fully verified from the browser. Preview Origin header on this fork is https://execution-control-3.cluster-5.preview.emergentcf.cloud while REACT_APP_BACKEND_URL is https://execution-control-3.preview.emergentagent.com; both are now trusted via BOUNTY_ALLOWED_ORIGINS + origin_policy.py sibling-host regex. Observed 31 /api/bounty responses, all 200; two 401s in console were unrelated (not on /api/bounty) and did not affect flow. cc-run-* buttons include cc-run-scheduler and cc-run-discovery which are NOT opportunity buttons; opportunity buttons follow cc-run-bopp_<id>. Do NOT click cc-run-confirm without route mocking POST /api/bounty/execution/bounty/run to avoid triggering real execution/PR.",
+  "regression_evidence": {
+    "PUT /api/bounty/execution/policy (real)": "200 OK, body reflects new value; no 'Untrusted request origin' text on page",
+    "GET /api/bounty/command-center": "200 OK",
+    "GET /api/bounty/execution/policy": "200 OK",
+    "403 origin responses observed": 0,
+    "cc-run-modal Cancel network calls to /execution/bounty": 0,
+    "mocked run confirm -> cc-live-job appears": true,
+    "state polls handled": 2,
+    "cc-job-stop hidden after terminal": true
+  }
+}

@@ -1,0 +1,123 @@
+<analysis>**original_problem_statement**: 
+Transform the existing application into a zero-upfront-capital autonomous coding bounty platform called Bounty Hunter. 
+PRODUCT REQUIREMENTS: The backend execution system is fully completed and successfully verified against a real live bounty (Draft PR #4333 created). The current requirement is to finish the operator UI on the React dashboard (specifically the Command Center) by wiring it to the existing backend endpoints (, , , ). 
+
+**User's preferred language**: English (INSTRUCT next agent to respond in English only)
+
+**what currently exists?**: 
+A fully functional backend orchestration pipeline for Bounty Hunter capable of executing a bounded coding workflow against live third-party GitHub repositories. A React frontend exists with a Command Center, but it lacks the UI wiring (Run, Stop, Live Job Panel, Settings) to interface with the newly created execution pipeline backend APIs. 
+
+**Last working item**: 
+    - Last item agent was working: Exploring  and  to formulate an implementation plan to present to the user via the  tool. The agent was paused before presenting the plan.
+    - Status: IN PROGRESS
+    - Agent Testing Done: N
+    - Which testing method agent to use? screenshot tool followed by frontend testing agent.
+    - User Testing Done: N
+
+**All Pending/In progress Issue list**: 
+  - Issue 1: Dashboard UI Wiring for Execution Pipeline (P0)
+     - Attempted fixes: Explored codebase. No actual code changes made yet in this session.
+     - Next debug checklist: Update . Ensure the following endpoints are used:
+       - 
+       - 
+       - 
+       - 
+     - Why fix this issue and what will be achieved with the fix? Completes the user's requirement to manage and observe the AI execution pipeline directly from the frontend dashboard.
+     - Status: NOT STARTED
+     - Is recurring issue? N
+     - Should Test frontend/backend/both after fix? Frontend
+     - Blocked on other issue: None.
+
+**In progress Task List**: 
+  - Task 1: Formulate and present the execution plan via 
+     - Where to resume: Immediately call  presenting the plan to implement the UI features (Run, Stop, Polling, Job Panel, Settings) as requested by the user.
+     - What will be achieved with this? User approval to proceed with frontend modifications.
+     - Status: IN PROGRESS
+     - Should Test frontend/backend/both after fix? NA
+     - Blocked on something: User approval.
+
+**Upcoming and Future Tasks**:
+  - Implement RUN BOUNTY button on qualified opportunities in the UI (P0).
+  - Implement Live Job Panel showing (bounty, reward, status, current stage, model, attempt, retries, corrections, escalation, provider cost, remaining budget, E2B status, test status, security status, code review status, branch, PR, failure/next action) (P0).
+  - Implement active job polling every 1-2 seconds until reaching a terminal state (P0).
+  - Implement STOP JOB button tied to the stop endpoint (P0).
+  - Implement Execution Settings panel tied to the GET/PUT policy endpoints (P1).
+  - Refine prompt-injection safety regex ( in ) to prevent false positives blocking valid crypto/security bounties. (P2)
+  - Enable continuous background discovery () permanently once everything is deemed successful. (P2 - Gated)
+
+**Completed work in this session**:
+- Codebase exploration (PRD and  viewed). No code edits made.
+
+**Earlier issues found/mentioned but not fixed**:
+   - Issue 1: Overly strict deterministic security checks for prompt-injection (wallet and rm -rf) in .
+   - Debug checklist: Review  ().
+   - Why to solve this issue and what will be achieved with this? Valid crypto/security bounties get falsely rejected.
+   - Should Test frontend/backend/both after fix: Backend
+   - Is recurring issue? Y
+
+**Known issue recurrence from previous fork**:
+  - Issue recurrence in previous fork: None
+  - Recurrence count: 0
+  - Status: RESOLVED
+
+**Code Architecture**:
+- : execution controllers, routes, and workers (already functional).
+- : React UI components including  which manages the dashboard view.
+
+**Key Technical Concepts**:
+React, FastAPI, UI state management, polling intervals, E2B (Execution Sandboxes).
+
+**key DB schema**:
+  - : Tracks execution state, active children, and .
+  - : Registry tracking claims to prevent duplicate commenting.
+
+**changes in tech stack**:
+- None in this session.
+
+**All files of reference**: 
+-  (Target for UI work)
+-  (Reference for API route signatures)
+
+**Areas that need refactoring**: 
+-  ( false positives).
+
+**key api endpoints**:
+- 
+- 
+- 
+- 
+- 
+
+**Critical Info for New Agent**: 
+- **CRITICAL RESTRICTION:** DO NOT test the UI by triggering a real live GitHub PR. The user explicitly stated: do NOT create another GitHub PR just to test the UI - use mocks or the already-completed job data for UI tests.
+- DO NOT redesign or rewrite the execution backend. It is verified and works.
+- DO NOT expose merge controls.
+- Keep autonomous scheduler/hunting OFF.
+- **Your first action MUST be calling ** to outline your plan for wiring the UI, as the user explicitly requested: Please use ask_human tool and confirm your plan now.
+
+**documents and test reports created in this job**: 
+- None created in this specific short session.
+
+**Last 10 User Messages and any pending HUMAN messages**: 
+ - User Message (latest): Please use ask_human tool and confirm your plan now. -> Pending Action: Agent must formulate plan and call .
+ - User Message (previous): Detailed requirements to build the React dashboard UI (Run, Stop, Status, Settings) over existing backend endpoints and strictly mock UI testing without making real GitHub PRs. -> Pending Implementation.
+
+**Project Health Check:**
+Healthy. Backend verified via live tests previously.
+
+**3rd Party Integrations**:
+- E2B Sandbox — requires User API Key ()
+- GitHub API — requires User Classic PAT
+- Experiential Labs (Model Gateway) — requires User API Key ()
+
+**Testing status**:
+  - Testing agent used after significant changes: NO
+  - Troubleshoot agent used after agent stuck in loop: NO
+  - Test files created: None
+  - Known regressions: None
+
+**Credentials to test flow:**
+- Check  for owner login info.
+
+**What agent forgot to execute**:
+- The previous agent was paused before it could execute the  tool as explicitly requested by the user in the latest message.</analysis>

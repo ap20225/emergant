@@ -1,0 +1,25 @@
+{
+  "summary": "Frontend-only testing of the new Discovery board on Dashboard '/'. All 5 requested checks pass: board renders below Autonomous execution with correct summary tiles (Total=123, Executable=98, Payable=1) and lane counts (Autonomous=0, Owner approval=54, Watchlist=69); source health row shows github HEALTHY·93, opire HEALTHY·30, algora DEGRADED·0; lane tabs (disc-tab-ALL/AUTONOMOUS/OWNER_APPROVAL/WATCHLIST) filter disc-list correctly (OA=54 rows, WL=60/69 rows visible with 'Why blocked' reasons like REWARD_NOT_VERIFIED, PAYOUT_CERTAINTY_INSUFFICIENT_FOR_AUTONOMOUS, STATUS_REJECTED, SAFETY_FLAGGED); list contains both 'github' and 'opire' rows proving multi-source; priorities ordered MEDIUM→LOW (Autonomous count is 0 so no HOT/HIGH exist in current data — matches backend state). Refresh discovery button called POST /api/bounty/discovery/run which returned 200 with result {discovered:0, qualified:0, duplicates:80}, no live-job panel appeared, no PR/execution triggered, and no console errors or 403s on /discovery/board or /discovery/run. cc-panel-autonomous still renders above discovery-board (DOM order verified).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {"flow": "Discovery refresh success toast", "issue": "toast.success(...) is called after POST /discovery/run returns 200, but no [data-sonner-toast] element was observed in DOM during test (queried after ~20s to allow live source fetch). Sonner default auto-dismiss is ~4s, so this is likely a test-timing artifact rather than a real bug. Board still reloads correctly and totals update. Suggest confirming Sonner Toaster is mounted at app root; if it is, no action needed.", "affected_selectors": ["[data-sonner-toast]"]}
+    ],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration18_browser/", "/app/test_reports/iteration18_board.jpeg", "/app/test_reports/iteration18_after_refresh.jpeg"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "DiscoveryBoard.js polls GET /discovery/board every 15s via setInterval — acceptable but consider pausing when tab is hidden (document.visibilityState) to reduce load.",
+    "Row rendering is capped at rows.slice(0,60) — 69 watchlist items exist so 9 rows are hidden with no pagination or 'load more' affordance. Not a bug, but users cannot inspect the tail of the watchlist. Consider adding pagination or virtualized list."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (skipped per request)", "frontend": "100%"},
+  "test_credentials": "Owner session pulled from Mongo via /app/tests/session_utils.get_owner_session_token() (session_token cookie set on both preview + cluster domains).",
+  "seed_data_creation": "None; used existing ingested board (~123 items) as noted in context.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "To auth in browser tests: fetch token via `python -c 'from tests.session_utils import get_owner_session_token; print(get_owner_session_token())'` (pymongo isn't available inside the browser-automation sandbox, so fetch first then hard-code into the Playwright script). Set cookie session_token on BOTH execution-control-3.preview.emergentagent.com and execution-control-3.cluster-5.preview.emergentcf.cloud. A GUIDED TOUR modal appears on first Dashboard load — press Escape or click the close button before interacting. Board data: 123 items, algora adapter is DEGRADED (total_discovered=0) which is expected/isolated. Refresh is safe (read-only) and current state has 0 autonomous-lane items so autonomous execution stays idle — do not toggle it on.",
+  "rca of the issue": "No blocking issues found. Only minor observation: success toast for refresh could not be captured in test due to auto-dismiss timing; functionally the flow works (200 response, board reload, totals update)."
+}

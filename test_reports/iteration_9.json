@@ -1,0 +1,39 @@
+{
+  "summary": "Completed scoped read-only verification for rename + saved integration metadata. Frontend branding text is Bounty Hunter across requested surfaces, and owner execution/security metadata correctly reflects already-saved GitHub and E2B configuration without re-auth or provider calls.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_bounty_iteration9_saved_metadata.py",
+    "/app/test_reports/pytest/pytest_results_iteration9_saved_metadata.xml",
+    "/app/tests/iteration9_owner_browser_checks.py",
+    "/app/test_reports/iteration9_browser/owner_browser_results.json"
+  ],
+  "action_items": [
+    "No code fix required for this scoped rename/metadata task.",
+    "Keep current read-only verification approach for saved provider metadata; avoid triggering verify/disconnect/reconfigure actions in this flow."
+  ],
+  "critical_code_review_comments": [
+    "No regression found in scoped files. Ongoing technical debt remains: /app/backend/server.py is large (>700 lines) and should continue planned modular split to reduce risk."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_bounty_iteration9_saved_metadata.py",
+    "/app/tests/iteration9_owner_browser_checks.py",
+    "/app/test_reports/iteration_9.json"
+  ],
+  "success_rate": {
+    "backend": "100% (6/6 targeted tests passed)",
+    "frontend": "100% (scoped owner/public checks passed)"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Verified on public preview URL with existing owner session helper only. /api/bounty/execution/status confirms GitHub CONNECTED ap20225/bounty-hunter issue #1 with repository_read/issue_read true; runner credential_configured true with template openclaw and status CONFIGURED_UNVERIFIED; blockers do not include GITHUB_REQUIRED/RUNNER_REQUIRED; model catalog remains 302 and inference remains NOT VERIFIED; usage remains 0.",
+  "rca of the issue": "No bug reproduced in this scope. Earlier mismatch was stale reporting context; current persisted metadata and UI representations are aligned with actual saved state."
+}

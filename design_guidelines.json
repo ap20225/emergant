@@ -1,0 +1,192 @@
+{
+  "transformation_blueprint": {
+    "project_name": "Penniless Coding Bounty Autonomous Agent",
+    "core_mission": "Zero-upfront-capital autonomous coding bounty discoverer, evaluator, researcher, solver, reviewer, PR generator, and financial outcome tracking platform.",
+    "migration_and_cleanup_plan": {
+      "preserve_infrastructure": [
+        "Google Auth & JWT Session management (/frontend/src/pages/AuthCallback.js)",
+        "Backend FastAPI server skeleton & gateway configuration (/backend/server.py, gateway_config.py)",
+        "MongoDB client connections & async database session setup",
+        "Shadcn UI component library in /frontend/src/components/ui/*.jsx",
+        "Sonner toast notifications and Lucide React icons"
+      ],
+      "disable_deactivate_dropshipping": [
+        "Deactivate dropshipping agent workflows, Shopify/AliExpress API endpoints, and product catalog scrapers",
+        "Replace dropshipping database schemas with Bounty Jobs, Opportunities, Financial Ledger, and Audit Logs",
+        "Update main navigation and dashboard pages to Coding Bounty Command Center"
+      ]
+    }
+  },
+  "design_system": {
+    "aesthetic_theme": "Dark Technical Operations Command-Center",
+    "theme_rules": {
+      "default_mode": "dark",
+      "forbidden_fonts": ["Space Grotesk", "Inter"],
+      "forbidden_colors": ["#1B93A4", "#7351B7"],
+      "spacing_scale": "Generous Spacing System (p-4 to p-12 with 1px tactile borders and internal p-6 padding to prevent edge text collision)"
+    },
+    "typography": {
+      "headline_font": "Outfit, sans-serif",
+      "body_font": "'Fira Sans', -apple-system, sans-serif",
+      "code_data_font": "'Fira Code', 'JetBrains Mono', monospace",
+      "hierarchy": {
+        "h1": "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white",
+        "h2": "text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-slate-100",
+        "h3": "text-lg sm:text-xl font-semibold text-slate-200",
+        "h4_card_title": "text-sm font-semibold uppercase tracking-wider text-slate-400",
+        "body": "text-sm text-slate-300 leading-relaxed",
+        "mono_data": "font-mono text-xs sm:text-sm tracking-tight text-emerald-400"
+      }
+    },
+    "colors": {
+      "background": "#090A0F",
+      "surface_card": "#12141D",
+      "surface_card_hover": "#1A1D2A",
+      "border": "#1E2230",
+      "border_highlight": "#2E354A",
+      "primary_accent": "#F97316",
+      "primary_accent_hover": "#EA580C",
+      "secondary_accent": "#3B82F6",
+      "success": "#22C55E",
+      "warning": "#EAB308",
+      "danger": "#EF4444",
+      "info": "#06B6D4",
+      "text_primary": "#F3F4F6",
+      "text_secondary": "#9CA3AF",
+      "text_muted": "#6B7280"
+    },
+    "visual_enhancers": {
+      "card_style": "Cardless or sharp 1px solid bordered containers (border-[#1E2230]) with bg-[#12141D] and optional sub-pixel top highlight border border-t-[#2E354A]",
+      "glassmorphism": "Header and sticky navigation using backdrop-blur-xl bg-[#090A0F]/85 border-b border-[#1E2230]",
+      "glow_effects": "Subtle status indicators with soft radial glow (e.g. shadow-[0_0_12px_rgba(34,197,94,0.2)] for ONLINE state, shadow-[0_0_12px_rgba(249,115,22,0.25)] for WORKING state)",
+      "badge_styles": "Monospace pill badges with tinted background (e.g., bg-amber-500/10 text-amber-400 border border-amber-500/20)"
+    }
+  },
+  "navigation_and_structure": {
+    "layout_type": "Sidebar Command Center with Top Status Header",
+    "required_nav_links": [
+      { "id": "dashboard", "label": "Dashboard", "path": "/dashboard", "icon": "LayoutDashboard" },
+      { "id": "opportunities", "label": "Bounty Board", "path": "/opportunities", "icon": "Target" },
+      { "id": "jobs", "label": "Active Jobs", "path": "/jobs", "icon": "Cpu" },
+      { "id": "repositories", "label": "Repositories", "path": "/repositories", "icon": "FolderGit2" },
+      { "id": "agents", "label": "Agents Status", "path": "/agents", "icon": "Bot" },
+      { "id": "pull-requests", "label": "Pull Requests", "path": "/pull-requests", "icon": "GitPullRequest" },
+      { "id": "payments", "label": "Payments", "path": "/payments", "icon": "Receipt" },
+      { "id": "finance", "label": "Finance Engine", "path": "/finance", "icon": "DollarSign" },
+      { "id": "learning", "label": "Learning Matrix", "path": "/learning", "icon": "Brain" },
+      { "id": "security", "label": "Security Center", "path": "/security", "icon": "ShieldCheck" },
+      { "id": "audit-log", "label": "Audit Trail", "path": "/audit-log", "icon": "History" },
+      { "id": "settings", "label": "Settings & Controls", "path": "/settings", "icon": "Sliders" }
+    ],
+    "emergency_header": {
+      "global_stop_button": "Prominent Red Emergency Stop with Confirmation Modal (data-testid='emergency-global-stop-button')",
+      "budget_ticker": "Live Available Capital ($0.00 initial bootstrap), Verified Revenue, Active Spend",
+      "autonomy_mode_badge": "Current Mode Indicator: OBSERVE | ASSISTED | AUTONOMOUS"
+    }
+  },
+  "component_architecture": {
+    "file_extension": ".js",
+    "components": [
+      {
+        "name": "CommandLayout",
+        "path": "/frontend/src/components/layout/CommandLayout.js",
+        "description": "Main layout wrapper containing sidebar, header with emergency stop, live capital counter, and alert banner."
+      },
+      {
+        "name": "MainDashboard",
+        "path": "/frontend/src/pages/MainDashboard.js",
+        "description": "Primary metrics overview: Available Capital, Verified Revenue, Net Profit, Active Jobs, Pipeline Value, Agent Fleet Status grid, and Recent Audit Events."
+      },
+      {
+        "name": "BountyBoard",
+        "path": "/frontend/src/pages/BountyBoard.js",
+        "description": "Sortable/filterable table for discovered opportunities with Expected Profit, Success Probability, Difficulty, Risk Score, and PURSUE/IGNORE actions."
+      },
+      {
+        "name": "ActiveJobView",
+        "path": "/frontend/src/pages/ActiveJobView.js",
+        "description": "Lifecycle stepper (Scout -> Research -> Coding -> Testing -> Security -> Review -> PR -> Payment) with real-time agent output logs, diff viewer, and Human Approval Gate."
+      },
+      {
+        "name": "AgentFleetStatus",
+        "path": "/frontend/src/pages/AgentFleetStatus.js",
+        "description": "Grid of 12 specialized agents (Master, Scout, Evaluator, Researcher, Coder, Tester, Security, Reviewer, PR Manager, Outcome Tracker, Payment Tracker, Finance, Learning) showing state (ONLINE, WORKING, IDLE, BLOCKED, ERROR)."
+      },
+      {
+        "name": "FinanceDashboard",
+        "path": "/frontend/src/pages/FinanceDashboard.js",
+        "description": "Bootstrap financial ledger (Levels 0-4), gross/verified revenue, operating budget, reserves, reinvestment sliders, and compute cost breakdown charts."
+      },
+      {
+        "name": "SecurityCenter",
+        "path": "/frontend/src/pages/SecurityCenter.js",
+        "description": "Sandbox isolation status, credential/API key states (CONNECTED / MISSING / REVOKED - secrets NEVER exposed), repository allowlists, and blocked operations log."
+      },
+      {
+        "name": "HumanApprovalGate",
+        "path": "/frontend/src/components/bounty/HumanApprovalGate.js",
+        "description": "Review panel showing diff viewer, test reports, security clearance, PR preview, and action buttons (APPROVE SUBMISSION, REJECT, REQUEST CHANGES, ABORT)."
+      }
+    ]
+  },
+  "charts_and_visualizations": {
+    "library": "Recharts",
+    "chart_types": [
+      {
+        "type": "AreaChart",
+        "usage": "Verified Revenue vs Operating Capital over time",
+        "colors": ["#F97316", "#22C55E"]
+      },
+      {
+        "type": "BarChart",
+        "usage": "Bounty Expected Profit by Language & Source",
+        "colors": ["#3B82F6", "#8B5CF6"]
+      },
+      {
+        "type": "PieChart/Donut",
+        "usage": "Budget Allocation (70% Reserve, 20% Reinvestment, 10% Experimentation)",
+        "colors": ["#06B6D4", "#F97316", "#EAB308"]
+      }
+    ]
+  },
+  "media_and_assets": {
+    "image_urls": {
+      "code_workspace_bg": "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "terminal_code_preview": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "agent_avatars": {
+        "master_orchestrator": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "security_reviewer": "https://images.unsplash.com/photo-1506863530036-1efeddceb993?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "coding_agent": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?crop=entropy&cs=srgb&fm=jpg&q=85"
+      }
+    }
+  },
+  "testing_and_accessibility": {
+    "data_testid_rules": "All interactive elements (buttons, links, form inputs, toggle switches, table action buttons, modal dialogs) MUST include explicit data-testid attributes in kebab-case.",
+    "sample_data_testids": [
+      "data-testid='nav-dashboard-link'",
+      "data-testid='nav-opportunities-link'",
+      "data-testid='emergency-global-stop-button'",
+      "data-testid='bounty-filter-language-select'",
+      "data-testid='bounty-pursue-button-123'",
+      "data-testid='approval-approve-submission-button'",
+      "data-testid='approval-reject-button'",
+      "data-testid='finance-reinvestment-slider'"
+    ],
+    "contrast_and_accessibility": "APCA & WCAG AA 4.5:1 text-to-background contrast minimum. All icon-only buttons must have aria-label and data-testid. Focus states must feature a 2px offset ring (focus:ring-2 focus:ring-[#F97316])."
+  },
+  "instructions_to_main_agent": [
+    "Transform existing OpenClaw dropshipping project in /app without creating a standalone external app.",
+    "Use JavaScript (.js and .jsx files) as existing frontend codebase uses .js.",
+    "Preserve Google auth callback and Shadcn UI component wrappers in /frontend/src/components/ui/.",
+    "Ensure ALL interactive buttons, table rows, form elements, and state cards possess precise data-testid attributes for E2E testing.",
+    "Do NOT hardcode simulated revenues as final verified earnings without clear distinction in the ledger.",
+    "In corporate/command-center dashboard views, NEVER use Space Grotesk or teal green (#1B93A4). Use Outfit for headings, Fira Sans for text, Fira Code/JetBrains Mono for metrics and code diffs."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Never use generic centered layouts or plain bright gradient full-screens. Use dark structured command center layouts with 1px border grid divisions.",
+    "Micro-interactions: Hover states on all buttons and table rows with smooth transition-colors (duration-150 ease-in-out). Exclude transforms from universal transitions.",
+    "Generous padding: Cards and section containers must have internal padding (p-5 or p-6) to avoid text touching borders.",
+    "Use Sonner toasts (/frontend/src/components/ui/sonner.jsx) for alert notifications and operational status changes.",
+    "All agent statuses must be visually distinct with color badges (Green = ONLINE/WORKING, Yellow = IDLE/WAITING_APPROVAL, Red = BLOCKED/ERROR)."
+  ]
+}

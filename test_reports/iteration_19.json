@@ -1,0 +1,35 @@
+{
+  "summary": "Iteration 19 read-only verification: confirmed E2B runner RUNTIME_VERIFIED with file_write=true attestation; discovery board lane distribution (AUTONOMOUS=0, OWNER_APPROVAL=78, WATCHLIST=94, total=172); background_discovery=true; fork/authorize fail-closed (409). No paid ops, no writes.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_bounty_readonly_iter19.py",
+    "/app/test_reports/pytest/iter19.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "attestation is nested under runner.attestation only; there is no top-level execution_attestations map in the status response. If the product contract advertises execution_attestations, consider exposing an aggregated top-level map for clients that don't want to descend into runner.attestation.",
+    "runner attestation records raw_ip_egress_open=true (raw-IP egress after lockdown remains reachable). This is disclosed in network_note as 'partial control' — flag as a security posture item for the main agent to consider hardening or documenting the residual risk explicitly on the UI."
+  ],
+  "updated_files": ["/app/backend/tests/test_bounty_readonly_iter19.py"],
+  "success_rate": {"backend": "100%", "frontend": "N/A"},
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Session token read from user_sessions collection (latest by created_at). All 4 read-only verifications pass. Runner attestation lives at runner.attestation (id='runner-verification') in GET /api/bounty/execution/status. Discovery board totals: 172 items across OWNER_APPROVAL(78)+WATCHLIST(94), AUTONOMOUS=0 (correct — TaskBounty confirmed 0 open upstream). Fork authorize correctly returns 409 for non-fork repos. Never call POST /connections/runner/verify (paid).",
+  "verified_evidence": {
+    "capabilities.workspace": "RUNTIME_VERIFIED",
+    "runner.status": "RUNTIME_VERIFIED",
+    "runner.runtime_verified": true,
+    "attestation.verified": true,
+    "attestation.file_write": true,
+    "attestation.non_root": true,
+    "attestation.git": true,
+    "attestation.python": true,
+    "attestation.verified_at": "2026-09-20T18:06:44.772985+00:00",
+    "lane_counts": {"AUTONOMOUS": 0, "OWNER_APPROVAL": 78, "WATCHLIST": 94, "TOTAL": 172},
+    "background_discovery": true,
+    "fork_authorize_negative_status": 409,
+    "fork_authorize_negative_detail": "Provided fork_repo is not a GitHub fork"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "summary": "Frontend-only test of the new Command Center operator wiring at /command-center (Run bounty, Live Job Panel + 2s polling, Stop flow, Execution Settings modal). All run/state/stop endpoints were mocked via Playwright page.route per user's safety rule; no real bounty execution or GitHub PR was triggered. Owner session cookie reused from Mongo user_sessions.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/test_reports/iteration_14.json"
+  ],
+  "action_items": [
+    "None blocking. Optional: investigate a transient 403 observed once on a follow-up API call during phase-2 policy reopen (curl-verified PUT/GET /execution/policy return 200 with the owner cookie). If reproducible under load, add retry/backoff or explicit CSRF/origin diagnostics."
+  ],
+  "critical_code_review_comments": [
+    "CommandCenter.js polling effect correctly stops when s.active===false and clears timer on unmount (no stale-closure leaks observed).",
+    "Stop flow correctly resets `stopping=false` inside the state effect terminal branch and inside doStop's catch, matching the requirement that a failed stop (409) must NOT fabricate STOPPED and must re-enable the Stop button — verified in browser.",
+    "canRun(status) is limited to QUALIFIED and AWAITING_AUTHORIZATION as required.",
+    "Run button uses busy='run-bounty' shared across rows (setBusy('run-bounty') during run), so if multiple Run buttons existed simultaneously they would all show busy. Minor UX issue — consider per-row busy id (busy===`run-bounty-${id}`). Not blocking because the Run confirmation modal forces one-at-a-time.",
+    "Policy save handler correctly leaves modal open on failure (attempt() swallows exception before done? is invoked)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "not tested (per request)", "frontend": "100% (5/5 phases)"},
+  "test_credentials": "Owner session cookie reused from Mongo user_sessions for user_12742a4c8152 (token expires 2026-09-25). Not persisted to disk.",
+  "seed_data_creation": "None. Execution policy was temporarily changed to max_total_model_attempts=5 during phase 2, then restored to defaults {4,2,1,2,1} via curl PUT with 200 response — verified via GET.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "phase_results": {
+    "phase1_load_and_controls": {
+      "panels_visible": ["system","sources","opportunities","finance","execution","safety"],
+      "cc-exec-settings_visible": true,
+      "run_button_count_on_QUALIFIED_or_AWAITING_AUTHORIZATION_rows": 29,
+      "verdict": "PASS"
+    },
+    "phase2_execution_settings_modal": {
+      "modal_opens_populated": true,
+      "original_values": {"total_attempts":4,"per_model":2,"corr_model":1,"corr_total":2,"timeout_retries":1},
+      "budget_readonly_displayed": "$0.25",
+      "timeouts_readonly_displayed": "routine 45s · coding 90s · flagship 120s",
+      "save_persisted_new_value": true,
+      "persistence_verified_via_curl_GET": true,
+      "restored_to_defaults": true,
+      "verdict": "PASS (with a minor test-only re-open flake; PUT/GET both curl-verified 200)"
+    },
+    "phase3_run_confirmation_cancel_safe": {
+      "modal_opens_with_opp_status_reward": true,
+      "cancel_closes_modal": true,
+      "post_to_execution_bounty_run_calls_after_cancel": 0,
+      "verdict": "PASS"
+    },
+    "phase4_live_job_polling_terminal_mocked": {
+      "run_endpoint_calls": 1,
+      "state_poll_count_across_stages": 3,
+      "stages_seen": ["CODING","TESTING","SUBMITTED"],
+      "poll_count_5s_after_terminal": 3,
+      "polling_stopped_on_active_false": true,
+      "stop_button_hidden_at_terminal": true,
+      "pr_link_shown": "#1 · DRAFT",
+      "boundary_text_at_terminal": "Terminal state — polling stopped. Draft PR only; no merge is ever performed.",
+      "cost_fields_rendered": {"spent":"$0.005000","cap":"$0.25","remaining":"$0.24"},
+      "model_shown": "qwen3-coder-flash",
+      "attempt_shown": "1 / 4",
+      "verdict": "PASS"
+    },
+    "phase5_stop_flow_mocked": {
+      "stop_409_error": {
+        "toast_shown": "Job is not running",
+        "stop_button_re_enabled_after_failure": true,
+        "no_fabricated_STOPPED_state": true
+      },
+      "stop_success_then_terminal": {
+        "immediate_label_after_confirm": "Stopping…",
+        "immediate_disabled": true,
+        "polling_stops_when_state_returns_active_false_STOPPED": true,
+        "stop_button_hidden_at_terminal": true,
+        "final_stage": "STOPPED"
+      },
+      "verdict": "PASS"
+    }
+  },
+  "context_for_next_testing_agent": "All Playwright tests used route interception for /api/bounty/execution/bounty/run, /state, /stop. Never click cc-run-confirm without mocks. Owner cookie is `session_token` (SameSite=None, secure). AWAITING_AUTHORIZATION opportunity example: bopp_9e38ae3ac716. Policy currently restored to {4,2,1,2,1}.",
+  "rca of the issue": "N/A — no functional bugs found. The single transient 403 observed once during phase-2 modal reopen did not reproduce via curl and did not affect persistence; likely unrelated background call and not from PUT/GET /execution/policy."
+}

@@ -1,0 +1,57 @@
+{
+  "summary": "Iteration 5 completed for real-execution guardrails using external API + isolated unit mocks + public browser checks. Independent regression confirms dashboard now shows 'Real execution blocked' (not misleading ready). Core backend fail-closed behavior validated; authenticated browser-only security interactions could not be fully executed due automation runtime missing pymongo-backed session helper dependency.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "Authenticated Security page browser verification",
+        "issue": "Browser automation runtime lacked pymongo, so owner session injection via /app/tests/session_utils.py could not run in Playwright script. Public flow assertions passed; owner-only UI actions were validated via API tests instead.",
+        "affected_selectors": [
+          "[data-testid='real-execution-status']",
+          "[data-testid='model-diagnostic-check']",
+          "[data-testid='start-controlled-job']"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_bounty_iteration4_readonly.py",
+    "/app/backend/tests/test_bounty_iteration5_execution_guards.py",
+    "/app/backend/tests/test_bounty_iteration5_gateway_unit.py",
+    "/app/backend/tests/test_bounty_iteration5_runner_unit.py",
+    "/app/test_reports/pytest/pytest_results_iteration5_combined.xml",
+    "/app/test_reports/iteration5_browser_public/dashboard_public.jpeg",
+    "/app/test_reports/iteration5_browser_public/security_public.jpeg",
+    "/root/.emergent/automation_output/20260915_230922/console_20260915_230922.log"
+  ],
+  "action_items": [
+    "Run one authenticated browser pass using existing owner session bootstrap supported in the browser runtime (or inject cookie from a pre-supplied secure fixture) to fully verify owner-only UI controls end-to-end.",
+    "Keep readiness truthfulness as implemented: do not regress to global-stop-only status logic.",
+    "When live credentials are eventually available, re-run owner UI checks for GitHub verify/save failure UX and model diagnostic blocker messaging with no secret leak in DOM/errors."
+  ],
+  "critical_code_review_comments": [
+    "Execution pipeline is intentionally fail-closed: runner preflight always blocks at cost-ceiling gate even when configured; this is consistent with current NOT READY state and should remain explicit in UX copy.",
+    "Secret-safe validation route wrapper correctly prevents Pydantic input echo on 422 for credential forms; regression tests now cover this behavior.",
+    "Gateway dispatch correctly records missing provider cost as PENDING/UNKNOWN (not zero) and performs single-shot failure semantics (no retry)."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_bounty_iteration5_execution_guards.py",
+    "/app/backend/tests/test_bounty_iteration5_gateway_unit.py",
+    "/app/backend/tests/test_bounty_iteration5_runner_unit.py",
+    "/app/test_reports/iteration_5.json"
+  ],
+  "success_rate": {
+    "backend": "100% (37/37 targeted tests passed)",
+    "frontend": "70% (public dashboard/security/responsive checks passed; owner-auth browser checks partially blocked by tooling dependency)"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Backend: run /app/test_reports/pytest/pytest_results_iteration5_combined.xml suite for regression. Frontend: public checks verified 'Real execution blocked' and no 320/768/1024/1440 overflow. Remaining gap is authenticated browser execution of owner-only Security controls because Playwright runtime couldn't import pymongo for session helper.",
+  "rca of the issue": "Prior misleading readiness bug appears fixed in current UI: Dashboard status now uses readiness and displays 'Real execution blocked'. Remaining verification gap is environmental/test-harness related (browser runtime missing pymongo), not app logic failure."
+}

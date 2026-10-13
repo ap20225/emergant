@@ -1,0 +1,166 @@
+/* Moltbot Setup Shell - Dark Theme Styles */
+
+/* Font imports are in index.css */
+
+/* Root color tokens */
+:root {
+  --mb-bg: #0f0f10;
+  --mb-bg-elev: #141416;
+  --mb-fg: #F2F3F5;
+  --mb-muted: #9CA3AF;
+  --mb-border: #1f2022;
+  --mb-accent: #FF4500;
+  --mb-accent-600: #E63E00;
+  --mb-accent-700: #CC3700;
+  --mb-success: #22c55e;
+  --mb-warning: #f59e0b;
+  --mb-error: #ef4444;
+  --mb-ring: #FF4500;
+  --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Fira Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Heading font class */
+.heading {
+  font-family: var(--font-heading);
+}
+
+/* Background noise texture overlay */
+.texture-noise {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1763386599791-fd86c07e1c86?auto=format&fit=crop&w=1200&q=60');
+  background-size: cover;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main app container */
+.App {
+  min-height: 100vh;
+  background-color: var(--mb-bg);
+  color: var(--mb-fg);
+  font-family: var(--font-body);
+}
+
+/* Primary button styles */
+.btn-primary {
+  background: var(--mb-accent);
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(255, 69, 0, 0.18);
+  transition: background-color 0.15s ease-out;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--mb-accent-600);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--mb-accent);
+  outline-offset: 2px;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Input focus styles */
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 69, 0, 0.15);
+}
+
+/* Progress bar animation */
+.progress-bar {
+  transition: width 0.3s ease-out;
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+/* Card hover effect */
+.setup-card {
+  transition: box-shadow 0.2s ease-out;
+}
+
+.setup-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* API key input monospace */
+.api-key-input {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Error alert styling */
+.error-alert {
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
+}
+
+/* Status indicator */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.running {
+  background: var(--mb-success);
+  box-shadow: 0 0 8px var(--mb-success);
+}
+
+.status-dot.stopped {
+  background: var(--mb-error);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .App {
+    padding: 0 1rem;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .btn-primary,
+  .setup-card {
+    transition: none;
+  }
+  
+  .animate-spin {
+    animation: none;
+  }
+}

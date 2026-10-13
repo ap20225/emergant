@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "login_heading": "Bounty Hunter workspace",
+      "login_heading_ok": true
+    },
+    {
+      "loading_brand": "Bounty Hunter",
+      "sidebar_brand": "Bounty Hunter",
+      "title": "Bounty Hunter",
+      "meta_description": "Bounty Hunter \u2014 coding bounty operations with human-approved execution, transparent costs, and audit trails.",
+      "title_ok": true,
+      "meta_ok": true
+    },
+    {
+      "fallback_heading_ok": true
+    },
+    {
+      "github_details": "ap20225 \u00b7 ap20225/bounty-hunter \u00b7 issue #1 \u00b7 read-verified Sep 15, 11:59 PM. Write access is not verified.",
+      "runner_details": "Saved template: openclaw \u00b7 credential stored securely \u00b7 configured Sep 16, 12:24 AM \u00b7 runtime not yet verified",
+      "runner_template": "openclaw",
+      "runner_key_blank": true,
+      "github_connected_repo_ok": true,
+      "github_issue_ok": true,
+      "github_read_verified_ok": true,
+      "runner_template_ok": true,
+      "runner_status_phrase_ok": true,
+      "blocker_no_github_required": true,
+      "blocker_no_runner_required": true,
+      "execution_not_ready_visible": true,
+      "catalog_302_visible": true,
+      "inference_unverified_visible": true
+    },
+    {
+      "width": 1440,
+      "height": 1080,
+      "brand_visible": true,
+      "brand_width": 131.03125,
+      "brand_right": 199.03125,
+      "clipped": false
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "brand_visible": true,
+      "brand_width": 131.03125,
+      "brand_right": 199.03125,
+      "clipped": false
+    }
+  ]
+}

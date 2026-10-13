@@ -1,0 +1,20 @@
+{
+  "summary": "Frontend-only regression for Execution Controls now on main dashboard + first-visit Walkthrough tour. All 5 requested behaviors verified end-to-end via Playwright against the public preview URL. Autonomous execution + escalation left ENABLED; daily budget $25.00, per-job cap $0.25.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "test_credentials": "Reused owner session_token from MongoDB user_sessions (user_12742a4c8152). Cookie session_token set on preview domain.",
+  "seed_data_creation": "None. Only mutated execution controls transiently (daily 25->40->25, per-job cap 0.25->40 rejected->0.25). Final state: exec ENABLED, esc ENABLED, daily $25.00, perjob $0.25 (as required).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Route '/' renders ExecutionControls (cc-panel-autonomous) directly on Dashboard.js with all expected tiles (cc-auto-exec ENABLED, cc-auto-esc ENABLED, cc-driver-status IDLE, cc-driver-reason REWARD_NOT_VERIFIED, cc-driver-eligible 0, cc-budget-daily $25.00, cc-budget-perjob $0.25, cc-budget-remaining $25.00, cc-budget-spent $0.00, cc-budget-concurrent 1). cc-open-controls opens cc-controls-modal populated from GET /api/bounty/execution/controls; toggles cc-cform-exec/cc-cform-esc both checked; PUT of daily=40 succeeded and reflected on panel; restore to 25/0.25 succeeded. Per-job > daily returns 422 with toast 'Per-job cap cannot exceed the daily budget...' as expected. Walkthrough (walkthrough-modal) auto-appears on first visit when localStorage bh_walkthrough_done_v1 is absent, has 5 steps, walkthrough-next -> walkthrough-finish closes and sets localStorage='1'; does not reappear on reload; dashboard-tour button reopens it; walkthrough-close dismisses. /command-center Autonomous panel also still renders (cc-panel-autonomous found). No console errors from new components; only the expected 422 from the negative validation test. Existing metrics (available-capital, verified-revenue, net-profit) still render.",
+  "rca of the issue": "No issues found."
+}

@@ -1,0 +1,42 @@
+{
+  "summary": "Iteration 8 targeted backend+frontend validation passed for free-first routing policy and guarded gateway behavior. Owner-only routing policy APIs, strict payload validation, policy persistence/reload, bounded free-attempt routing logic, and owner browser model-routing flows all worked as expected without production inference calls.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_bounty_iteration8_routing_policy_api.py",
+    "/app/backend/tests/test_bounty_iteration8_router_gateway_units.py",
+    "/app/tests/iteration8_owner_browser_checks.py",
+    "/app/test_reports/pytest/pytest_results_iteration8_targeted.xml",
+    "/app/test_reports/pytest/pytest_results_iteration8_invariants.xml"
+  ],
+  "action_items": [
+    "No blocking defects found in this scoped iteration; keep existing free-first and paid-disabled guardrails unchanged.",
+    "Operational: keep using /root/.venv Python runtime for owner browser checks because the separate screenshot automation runtime still lacks pymongo/session helper support."
+  ],
+  "critical_code_review_comments": [
+    "backend/server.py remains >700 lines (not changed this iteration); continue planned module split to reduce regression blast radius.",
+    "Current provider schema still cannot attest route-complete zero-charge guarantees; retaining FREE_MODEL_UNVERIFIED behavior is correct and safer than inference by metadata."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_bounty_iteration8_routing_policy_api.py",
+    "/app/backend/tests/test_bounty_iteration8_router_gateway_units.py",
+    "/app/tests/iteration8_owner_browser_checks.py",
+    "/app/test_reports/iteration_8.json"
+  ],
+  "success_rate": {
+    "backend": "100% (15/15 targeted tests passed)",
+    "frontend": "100% (owner routing-policy/browser checks passed)"
+  },
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Catalog refresh was intentionally not re-run. Verified current state still matches expected invariants (302 catalog models, 0 model_usage, 2 simulated jobs, 3 simulated payments, 0 external PR, live verified_revenue 0). Owner browser checks saved and restored routing policy successfully with PUT 200 and no overflow on desktop/mobile.",
+  "rca of the issue": "No new product bug found in this scope. One tooling limitation observed: mcp_browser_automation runtime cannot import pymongo/session helper, so authenticated owner browser flows must run with /root/.venv/bin/python Playwright script."
+}

@@ -1,0 +1,107 @@
+{
+  "summary": "Completed independent READ-ONLY diagnostic on external preview + Mongo + source + preserved workspaces. Verified no business-state mutation during this run (counts unchanged). Capability status is NOT READY for real external execution.",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "/api/bounty/opportunities/{id}/pursue",
+        "issue": "Orchestrator blocks non-simulated work ('Live execution BLOCKED'). Real authorized repo execution is not possible.",
+        "priority": "CRITICAL"
+      },
+      {
+        "endpoint": "/api/bounty/jobs/{id}/publish",
+        "issue": "Publish path unconditionally returns 409 NOT CONNECTED. No real GitHub draft PR creation path is active.",
+        "priority": "CRITICAL"
+      },
+      {
+        "endpoint": "/api/bounty/model/preflight/{job_id}",
+        "issue": "ModelRouter preflight always raises 409; no live LLM adapter invocation path.",
+        "priority": "HIGH"
+      }
+    ],
+    "minor": [
+      {
+        "endpoint": "/api/bounty/bootstrap (owner)",
+        "issue": "Integrations report GitHub/Webhook NOT CONNECTED, production_sandbox NOT CONNECTED, payments MANUAL EVIDENCE ONLY."
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Dashboard operating strip",
+        "issue": "Shows 'System ready' when global_stop=false even while critical integrations remain NOT CONNECTED.",
+        "selector": "[data-testid='system-operating-status']",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "GitHub connection and PR delivery",
+        "issue": "UI has 'Verify connection' action but current implementation validates only existing token; no OAuth/connect/install flow and no active real publish pipeline.",
+        "affected_selectors": [
+          "[data-testid='verify-github-connection']",
+          "[data-testid='prs-connection-status']"
+        ]
+      },
+      {
+        "flow": "Finance truthfulness",
+        "issue": "Simulation ledger correctly labels SIMULATED values; live and simulated remain separate. Real provider receipt confirmation remains unavailable.",
+        "affected_selectors": [
+          "[data-testid='finance-simulated-tab']",
+          "[data-testid='simulation-ledger-banner']"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_bounty_iteration4_readonly.py",
+    "/app/test_reports/pytest/pytest_results_iteration4_readonly.xml",
+    "/app/test_reports/iteration4_readonly_evidence.json",
+    "/app/test_reports/iteration4_git_evidence.json",
+    "/root/.emergent/automation_output/20260915_164607/console_20260915_164607.log"
+  ],
+  "action_items": [
+    "Do not claim production readiness. Keep status as NOT READY until credentialed GitHub read/write + real external repo run + real draft PR are truly connected and verified.",
+    "Add truthful system-status computation (integration-aware) instead of global_stop-only ready signal.",
+    "Implement and verify real GitHub OAuth/connect/install workflow, webhook secret setup, live webhook delivery handling, and external PR lifecycle sync.",
+    "Implement real model execution adapter (with budget enforcement) and production sandbox for authorized external repositories.",
+    "Add provider-backed payment confirmation and wallet/receipt tracking before claiming payout automation."
+  ],
+  "critical_code_review_comments": [
+    "Source confirms transport methods exist in github.py (branch/commit_file/draft_pr/pr_details) but routes/service do not wire an active external publish path; publish is explicitly blocked.",
+    "workspace.create always materializes bundled slugify fixture and initializes local git; no clone-from-authorized-repo path is used for execution.",
+    "ModelRouter preflight is fail-closed by design and always raises 409, so historical catalog checks are not equivalent to fresh inference capability.",
+    "Audit coverage exists for many state transitions, but read-only operations are not comprehensively audited and failed GitHub check auditing depends on endpoint path used."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_bounty_iteration4_readonly.py",
+    "/app/tests/collect_iteration4_git_evidence.py",
+    "/app/tests/generate_iteration4_readonly_evidence.py",
+    "/app/test_reports/iteration4_git_evidence.json",
+    "/app/test_reports/iteration4_readonly_evidence.json",
+    "/app/test_reports/iteration_4.json"
+  ],
+  "success_rate": {
+    "backend": "100% (5/5 read-only diagnostic pytest cases)",
+    "frontend": "90% (read-only label/integration checks passed; no mutation buttons executed)"
+  },
+  "seed_data_creation": "None. Verified before/after DB counts unchanged during this diagnostic: opportunities=2, jobs=2, payments=3, expenses=1, audit_logs=97, webhook_events=0.",
+  "retest_needed": true,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Executed only read-only checks + workspace.tests() on existing allowlisted fixture jobs. Did NOT run create/pursue/retry/safe-test/discover/full historical suites, did NOT call publish, did NOT trigger payments/expenses/webhooks, did NOT mutate repositories/branches/commits. Auth reused existing owner session (2 active sessions). Process env boolean check confirms GITHUB_TOKEN=false and GITHUB_WEBHOOK_SECRET=false.",
+  "commands_checks_executed": [
+    "pytest /app/backend/tests/test_bounty_iteration4_readonly.py -v --junitxml=/app/test_reports/pytest/pytest_results_iteration4_readonly.xml",
+    "python /app/tests/generate_iteration4_readonly_evidence.py",
+    "python /app/tests/collect_iteration4_git_evidence.py",
+    "Playwright read-only dashboard/security/pull-requests/finance label checks on external preview URL"
+  ],
+  "commands_not_run": [
+    "No POST/PUT mutation API diagnostics (except safe internal test harness setup only)",
+    "No /opportunities/{id}/pursue, /jobs/{id}/retry, /jobs/{id}/publish, /safe-test/discover",
+    "No webhook event creation, no payment/expense creation, no source/repo policy mutations",
+    "No workspace.create(), no git write operations, no external repo clone/branch/commit/PR",
+    "No paid/provider LLM inference calls"
+  ],
+  "rca of the issue": "Truthfulness gap root cause: frontend readiness label logic in Dashboard.js is tied only to controls.global_stop, while backend integration state (GitHub/webhook/model/sandbox/payment provider) remains not connected by design. Reproduction: owner and public dashboard both show 'System ready' even though owner bootstrap reports github=NOT CONNECTED, webhook=NOT CONNECTED, production_sandbox=NOT CONNECTED, model blocked. Mitigation: compute readiness from required-capability gates, display explicit blocked dependencies, and separate 'UI operational' from 'real external execution ready'."
+}

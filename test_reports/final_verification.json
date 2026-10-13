@@ -1,0 +1,28 @@
+{
+  "date": "2026-09-15",
+  "scope": "Existing-project command-center conversion and controlled LOCAL reference lifecycle; not full live autonomous execution",
+  "backend_acceptance": {"passed": 17, "failed": 0, "report": "pytest/pytest_results_after_fix.xml"},
+  "targeted_payment_retry_tests": {"passed": 4, "failed": 0, "report": "pytest/pytest_results_iteration2_targeted.xml"},
+  "frontend": {
+    "build": "PASS",
+    "public_and_owner_navigation_12_pages": "PASS",
+    "responsive_document_overflow_320_768_1024_1440": "PASS",
+    "owner_settings_and_observe_gate": "PASS",
+    "owner_approval_and_simulated_outcome": "PASS",
+    "owner_simulated_payment_pending_to_verified": "PASS",
+    "global_stop_banner_resume": "PASS: two consecutive owner browser cycles, no fallback",
+    "pointer_lock_after_modal_close": "auto",
+    "emergency_retest_log": "/root/.emergent/automation_output/20260915_051843/console_20260915_051843.log"
+  },
+  "fixed_report_issues": ["Versioned Python sandbox runtime library", "Exact first-party ingress Origin allowlist", "Controlled dialog pointer-event cleanup and direct control state update"],
+  "remaining_reported_bugs_in_reference_scope": [],
+  "not_connected_or_deferred": ["Production arbitrary-repository sandbox", "Metered general-purpose AI execution", "Live GitHub credentials and actual remote PR publication", "Payment provider", "Adaptive scoring and autonomous submission"],
+  "live_finances": {"verified_revenue": 0, "expenses": 0, "net_profit": 0, "available_budget": 0},
+  "simulated_finances": {"verified_revenue": 53, "expenses": 1, "net_profit": 52, "spendable": false},
+  "final_mode": "ASSISTED",
+  "global_stop": false,
+  "integrations_revoked": false,
+  "external_operations_claimed": false,
+  "simulated": ["Local fixture opportunity and reward", "Merge outcomes", "Financial ledger entries"],
+  "real_execution": ["Local Git repository", "Branch", "Code patch", "Seven regression tests", "Diff", "Commit", "Local PR Markdown", "Audit and approval records"]
+}

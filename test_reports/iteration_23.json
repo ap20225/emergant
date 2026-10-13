@@ -1,0 +1,64 @@
+{
+  "summary": "Verified auth-gate banner and session-expired detection fixes. All 12 backend tests passed (7 unauthenticated + 5 authenticated). Frontend correctly shows auth-required placeholders in all 5 components when not authenticated. Sign-in navigation works correctly.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_auth_gates.py",
+    "/app/backend/tests/test_authenticated_endpoints.py",
+    "/app/test_reports/pytest/iteration23_auth_gates.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Auth-gate implementation is correct: Layout.js shows banner when preview=true or sessionExpired=true",
+    "All 5 child components (ExecutionControls, DiscoveryBoard, RecommendedBounty, ReviewQueue, RepoAuthorization) correctly check authenticated state via ctx?.user",
+    "api.js correctly detects 401 responses and triggers onSessionExpired callback",
+    "Bootstrap endpoint correctly returns preview=true when no user session exists"
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_auth_gates.py",
+    "/app/backend/tests/test_authenticated_endpoints.py"
+  ],
+  "success_rate": {
+    "backend": "100% (12/12 tests passed)",
+    "frontend": "100% (all auth placeholders visible, navigation works)"
+  },
+  "test_credentials": "Temporary test session created via MongoDB for authenticated endpoint tests (auto-cleaned up)",
+  "seed_data_creation": "None - used existing instance owner user_12742a4c8152",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Auth-gate feature is fully working. When not authenticated: auth-gate-banner shows at top, all 5 components show auth-required placeholders with data-testid attributes (cc-controls-auth-required, disc-auth-required, cc-rec-auth-required, cc-repos-auth-required), buttons are disabled. When authenticated: all endpoints return valid data with 500+ bounties in discovery board. The owner's Google OAuth session has 0 active sessions (all 21 expired), so the app correctly shows unauthenticated state.",
+  "features_tested": {
+    "unauthenticated_state": {
+      "auth_gate_banner": "PASS - data-testid='auth-gate-banner' visible with 'Session required' message",
+      "auth_gate_sign_in_button": "PASS - data-testid='auth-gate-sign-in' navigates to /login",
+      "execution_controls_placeholder": "PASS - data-testid='cc-controls-auth-required' shows 'Sign in to access execution controls'",
+      "discovery_board_placeholder": "PASS - data-testid='disc-auth-required' shows 'Sign in to view bounty opportunities'",
+      "recommended_bounty_placeholder": "PASS - data-testid='cc-rec-auth-required' shows 'Sign in to view recommended bounties'",
+      "repo_authorization_placeholder": "PASS - data-testid='cc-repos-auth-required' shows 'Sign in to manage repositories'",
+      "execution_controls_button_disabled": "PASS - button has disabled attribute",
+      "login_page": "PASS - shows 'Instance owner? Sign in here' button"
+    },
+    "backend_api_unauthenticated": {
+      "bootstrap_200": "PASS - returns settings, controls, metrics, finance with preview=true",
+      "discovery_board_401": "PASS - returns 401 Not authenticated",
+      "execution_controls_401": "PASS - returns 401 Not authenticated",
+      "recommended_candidate_401": "PASS - returns 401 Not authenticated",
+      "review_queue_401": "PASS - returns 401 Not authenticated",
+      "repos_401": "PASS - returns 401 Not authenticated"
+    },
+    "backend_api_authenticated": {
+      "discovery_board_200": "PASS - returns 500 items with summary",
+      "execution_controls_200": "PASS - returns autonomous_execution, budget, driver status",
+      "recommended_candidate_200": "PASS - returns candidate data or empty state",
+      "review_queue_200": "PASS - returns buckets and counts",
+      "repos_200": "PASS - returns repositories and autonomous_budget"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "summary": "Focused final retest executed on external preview with authenticated owner session. Origin fix validated (trusted browser mutations no longer 403, untrusted origin still 403). Security/settings/payments/approval-outcome flows passed with one UI issue: resume via global-stop alert button did not clear state; fallback security resume did clear.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Global stop alert resume button",
+        "issue": "After triggering Global stop, clicking alert-level 'Resume operations' did not clear global stop banner across repeated attempts. Security page 'Resume operations' button succeeded immediately.",
+        "selector": "[data-testid='resume-operations-button']",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [
+      {
+        "flow": "Emergency stop -> resume via alert",
+        "issue": "Alert resume path appears non-effective in UI state sync, while /controls RESUME via security action works.",
+        "affected_selectors": [
+          "[data-testid='emergency-global-stop-button']",
+          "[data-testid='global-stop-confirm']",
+          "[data-testid='resume-operations-button']",
+          "[data-testid='security-resume']"
+        ]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/tests/seed_test_opportunity.py",
+    "/app/tests/export_owner_session_token.py",
+    "/app/tests/collect_iteration3_state.py",
+    "/app/tests/bounty_origin_fix_ui_regression.py",
+    "/root/.emergent/automation_output/20260915_051239/console_20260915_051239.log",
+    "/app/test_reports/iteration3_browser/final_state.jpeg"
+  ],
+  "action_items": [
+    "Fix alert-banner resume interaction/state update for [data-testid='resume-operations-button'] so global stop clears without fallback.",
+    "Re-run only emergency stop/resume alert flow after fix and confirm no fallback needed.",
+    "Keep strict origin allowlist behavior unchanged (trusted first-party -> 401 unauth, untrusted -> 403)."
+  ],
+  "critical_code_review_comments": [
+    "Layout has two resume entry points; only security-resume consistently clears state. Verify alert button event wiring/render-layer and bootstrap refresh synchronization after /controls RESUME.",
+    "No regression found in origin guard policy: trusted Origin now accepted for authenticated browser mutations; untrusted still blocked."
+  ],
+  "updated_files": [
+    "/app/tests/session_utils.py",
+    "/app/tests/seed_test_opportunity.py",
+    "/app/tests/bounty_origin_fix_ui_regression.py",
+    "/app/tests/export_owner_session_token.py",
+    "/app/tests/collect_iteration3_state.py",
+    "/app/test_reports/iteration_3.json"
+  ],
+  "success_rate": {
+    "backend": "100% (targeted origin contract checks + final state assertions)",
+    "frontend": "95% (all requested mutation flows passed except alert-resume clear behavior)"
+  },
+  "seed_data_creation": "Created TEST-only opportunity clone opportunity_testui_ae3f6ef7 (safe-test, simulated=true, unique id/issue_number/dedup_key). UI created TEST pending payment ref TEST_UI_1789449185 for job_2a5bc6a3deb2 and verified it.",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Final state confirmed via /api/bounty/bootstrap and /finance: mode ASSISTED, authorized_budget 0.0, global_stop false, integrations_revoked false, live verified_revenue 0.0. Simulation finance now verified_revenue 53.0, net_profit 52.0 after new 1 USD verified simulated payment. Fresh seeded job lifecycle completed to MERGED/PAYMENT_PENDING via UI.",
+  "rca of the issue": "Repro: authenticated owner -> topbar Global stop -> confirm -> alert appears -> click alert Resume operations. Expected alert clears; observed alert remains. Reproduced across 3 runs. Same session immediately succeeds with security page Resume action, so auth/origin/backend mutation path is functional. Likely UI interaction/state-sync issue specific to alert-level resume control path rather than API auth/origin policy."
+}

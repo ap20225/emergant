@@ -1,0 +1,15 @@
+{
+  "summary": "Verified Autonomous Execution Controls end-to-end from the browser at /command-center as instance-owner. All 5 test scenarios PASSED: (1) cc-panel-autonomous renders with defaults ($25.00 daily / $0.25 per-job, DISABLED/STOPPED/DISABLED, 0 eligible); (2) Execution Controls modal opens populated from GET /execution/controls, edit daily 25->30 saves via PUT (200) and panel refreshes, then restored to 25.00/0.25; (3) Confirmation gate works: enabling cc-cform-exec without cc-cform-confirm blocks save and autonomous stays DISABLED; with confirm PUT succeeds and cc-auto-exec=ENABLED (driver STOPPED because no eligible+authorized bounties); IMMEDIATELY re-disabled - cc-auto-exec=DISABLED; (4) per-job 30.00 > daily 25.00 rejected with 422 body 'Per-job cap cannot exceed the daily budget; one job must never consume the whole master budget'; state preserved at $25/$0.25; (5) No regressions - cc-panel-system/sources/opportunities/finance/execution/safety all present; cc-exec-settings opens cc-exec-policy-modal with cc-pol-escalations. Zero 403 'Untrusted request origin' errors observed on /api/bounty. FINAL DB state verified: AUTONOMOUS_EXECUTION_ENABLED=False, AUTO_ESCALATION_ENABLED=False, daily_budget_nano_usd=25000000000, per_job_cap_nano_usd=250000000, driver STOPPED/DISABLED.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": ["/app/test_reports/iteration_16.json"],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (frontend-only run)", "frontend": "100%"},
+  "test_credentials": "Reused instance-owner session_token from user_sessions for user_12742a4c8152 (cookie session_token, HttpOnly Secure SameSite=None).",
+  "seed_data_creation": "Transient only during test: daily 25->30->25; autonomous enabled briefly then disabled. Final state restored to all defaults (verified in system_settings).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Autonomous execution controls flow is fully verified. Two 401s on initial GET /api/bounty/command-center are pre-auth (before cookie applied) and self-resolve; not a bug. One 422 on PUT /execution/controls is the expected per-job>daily rejection. Autonomous execution IS LEFT DISABLED and budgets $25.00 / $0.25 as required. system_settings id=feature-flags shows AUTONOMOUS_EXECUTION_ENABLED=False, AUTO_ESCALATION_ENABLED=False. id=execution-controls shows daily=25000000000 nano, per_job=250000000 nano, max_concurrent=1. id=autonomous-driver-state shows STOPPED/DISABLED/eligible_count=0."
+}

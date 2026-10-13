@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-09-15T16:46:44.405418+00:00",
+  "owner_session_count": 2,
+  "process_env_presence": {
+    "GITHUB_TOKEN": false,
+    "GITHUB_WEBHOOK_SECRET": false
+  },
+  "db_counts_before": {
+    "opportunities": 2,
+    "jobs": 2,
+    "pull_requests": 2,
+    "payments": 3,
+    "expenses": 1,
+    "audit_logs": 97,
+    "webhook_events": 0,
+    "simulated_jobs": 2,
+    "external_prs": 0,
+    "live_payments": 0,
+    "simulated_payments": 3
+  },
+  "db_counts_after": {
+    "opportunities": 2,
+    "jobs": 2,
+    "pull_requests": 2,
+    "payments": 3,
+    "expenses": 1,
+    "audit_logs": 97,
+    "webhook_events": 0,
+    "simulated_jobs": 2,
+    "external_prs": 0,
+    "live_payments": 0,
+    "simulated_payments": 3
+  },
+  "db_counts_unchanged": true,
+  "api_checks": {
+    "public_bootstrap": {
+      "status": 200,
+      "preview": true
+    },
+    "owner_bootstrap": {
+      "status": 200,
+      "preview": false
+    },
+    "owner_finance_live": {
+      "status": 200,
+      "preview": null
+    },
+    "owner_finance_simulated": {
+      "status": 200,
+      "preview": null
+    }
+  },
+  "owner_integrations": {
+    "github": "NOT CONNECTED",
+    "model": "BLOCKED \u00b7 $0 BUDGET",
+    "webhook": "NOT CONNECTED",
+    "sandbox": "REFERENCE ONLY",
+    "production_sandbox": "NOT CONNECTED",
+    "payments": "MANUAL EVIDENCE ONLY",
+    "legacy": "DEACTIVATED"
+  },
+  "owner_metrics": {
+    "active_jobs": 0,
+    "discovered": 0,
+    "selected": 0,
+    "submitted": 0,
+    "merged": 0,
+    "acceptance_rate": null,
+    "payment_rate": null,
+    "average_reward": 0,
+    "average_cost": 0,
+    "average_hours": 0,
+    "pipeline_value": 0,
+    "awaiting_approval": 0
+  },
+  "job_checks": [
+    {
+      "job_id": "job_a87d8b843471",
+      "simulated": true,
+      "repository": "penniless-lab/slugify",
+      "status": 200,
+      "response_status": "MERGED"
+    },
+    {
+      "job_id": "job_2a5bc6a3deb2",
+      "simulated": true,
+      "repository": "penniless-lab/slugify",
+      "status": 200,
+      "response_status": "PAID"
+    }
+  ]
+}
