@@ -23,8 +23,12 @@ pip install -q --ignore-installed PyYAML -r "$RUN_DIR/requirements.txt" 2>&1 | g
 # 3. Frontend deps
 (cd "$ROOT/frontend" && yarn install --frozen-lockfile --silent)
 
-# 4. Local env files (both gitignored). Safe values: no keys, all spend caps 0,
-#    model provider pointed at a dead port so nothing can be billed.
+# 4. Local env files (both gitignored). Safe values: no keys, model provider
+#    pointed at a dead port so nothing can be billed. The real spend caps live in
+#    the DB (Execution controls: daily $25, per-job $0.25), not in env. The
+#    MAX_AUTONOMOUS_* / RUN_BUDGET_CAP / RUNNER_SPEND_AUTHORIZED vars below are
+#    read only by old tests, never by production code; kept so those tests load.
+#    E2B_API_URL is optional (SDK default endpoint when unset).
 if [ ! -f "$ROOT/backend/.env" ]; then cat > "$ROOT/backend/.env" <<ENV
 MONGO_URL=mongodb://localhost:27017
 DB_NAME=bounty_local
@@ -53,7 +57,7 @@ RUN_BUDGET_CAP_NANO_USD=0
 RUN_BUDGET_RESERVE_RATE_NANO_PER_MILLION=0
 RUNNER_SPEND_AUTHORIZED=false
 RUNNER_COMMAND_TIMEOUT_SECONDS=60
-RUNNER_HARD_TIMEOUT_SECONDS=120
+RUNNER_HARD_TIMEOUT_SECONDS=600
 RUNNER_VERIFY_TIMEOUT_SECONDS=60
 REACT_APP_BACKEND_URL=http://localhost:8001
 ENV
