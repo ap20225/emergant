@@ -49,7 +49,7 @@ class Settings(BaseModel):
     max_submissions_per_day: int = Field(default=3, ge=0, le=30)
     max_fix_iterations: int = Field(default=3, ge=0, le=3)
     max_repository_size: int = Field(default=50000, ge=1, le=100000)
-    max_execution_time: int = Field(default=120, ge=10, le=600)
+    max_execution_time: int = Field(default=600, ge=10, le=600)
     authorized_budget: float = Field(default=0, ge=0, le=100000)
     reserve_percent: int = Field(default=70, ge=0, le=100)
     reinvestment_percent: int = Field(default=20, ge=0, le=100)

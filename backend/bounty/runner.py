@@ -53,7 +53,7 @@ class RemoteRunner:
         from e2b import AsyncSandbox, CommandExitException
         checks, sandbox = {}, None
         try:
-            sandbox = await AsyncSandbox.create(api_key=SecretVault().get('e2b'), api_url=os.environ['E2B_API_URL'],
+            sandbox = await AsyncSandbox.create(api_key=SecretVault().get('e2b'), api_url=os.environ.get('E2B_API_URL'),
                 template=config['template_id'], timeout=int(os.environ['RUNNER_VERIFY_TIMEOUT_SECONDS']),
                 secure=True, envs={}, metadata={'penniless_verify': 'runtime'})
 
@@ -118,7 +118,8 @@ class RemoteRunner:
         from e2b import AsyncSandbox
         self.job_id = job['id']
         config = await self.store.one('integration_connections', {'id': 'runner'})
-        self.sandbox = await AsyncSandbox.create(api_key=SecretVault().get('e2b'), api_url=os.environ['E2B_API_URL'], template=config['template_id'],
+        # E2B_API_URL is optional: None lets the SDK use its default public endpoint.
+        self.sandbox = await AsyncSandbox.create(api_key=SecretVault().get('e2b'), api_url=os.environ.get('E2B_API_URL'), template=config['template_id'],
             timeout=int(os.environ['RUNNER_HARD_TIMEOUT_SECONDS']), secure=True, envs={},
             metadata={'penniless_job': job['id']})
         await self.store.db.jobs.update_one({'id': job['id']}, {'$set': {'sandbox_id': self.sandbox.sandbox_id}})

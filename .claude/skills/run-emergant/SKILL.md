@@ -54,7 +54,7 @@ Stop everything with:
 cd backend && set -a && . ./.env && set +a && python3 -m pytest -q -p no:cacheprovider tests/ --continue-on-collection-errors
 ```
 
-On a clean checkout this gives **131 passed, 38 failed, 51 skipped, 7 errors** in about 6s. The failures already exist in the repo; they have nothing to do with this setup:
+On a clean checkout this gives **132 passed, 37 failed, 51 skipped, 7 errors** in about 6s. The failures already exist in the repo; they have nothing to do with this setup:
 - test fakes are missing methods (`'_Store' object has no attribute 'one'`);
 - function signatures changed (`missing ... 'exec_authority'`);
 - some tests assume the Emergent `/app` layout (`FileNotFoundError`);
@@ -69,6 +69,7 @@ Compare against this baseline rather than expecting green. Without `set -a; . ./
 - **A guided-tour modal covers the dashboard on first visit.** `drive.cjs` suppresses it by presetting `localStorage.bh_walkthrough_done_v1=1`. To test the tour itself, click "Take the tour".
 - **`emergentintegrations==0.1.0` is on Emergent's private index**, so pip reports "No matching distribution". Only `backend/bounty/telegram_bot.py` imports it, lazily. Everything else runs without it.
 - **pip fails with `Cannot uninstall PyYAML 6.0.1, RECORD file not found`** because Debian owns that copy. `setup.sh` passes `--ignore-installed PyYAML`.
+- **A run's wall clock is `min(settings.max_execution_time, RUNNER_HARD_TIMEOUT_SECONDS)`** and covers triage, clone, baseline tests, coding, tests and two reviews. Both default to 600 now (the code default used to be 120, which was too short for anything real). An existing DB keeps whatever `max_execution_time` it already stored; change it under Settings → Safety & limits.
 - **The backend reads many env vars with `os.environ[...]`, not `.get`.** Every one of them must exist or the matching route raises `KeyError`. The `.env` written by `setup.sh` has the full list.
 - **Two backend log errors at startup are expected:** `supervisorctl: No such file` (the legacy OpenClaw gateway, deactivated) and `Bounty credentials MISSING: e2b, explabs`.
 - **Don't run `pkill -f "uvicorn server:app"` inline in an agent Bash call.** The pattern matches the calling shell's own command line and kills it (exit 144). Use `stop.sh`.
